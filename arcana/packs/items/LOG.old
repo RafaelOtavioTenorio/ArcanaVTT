@@ -1,0 +1,7 @@
+2025/05/17-12:45:39.167 5fa4 Recovering log #139
+2025/05/17-12:45:39.170 5fa4 Delete type=0 #139
+2025/05/17-12:45:39.170 5fa4 Delete type=3 #138
+2025/05/17-13:24:52.138 5d30 Level-0 table #143: started
+2025/05/17-13:24:52.138 5d30 Level-0 table #143: 0 bytes OK
+2025/05/17-13:24:52.138 5d30 Delete type=0 #141
+2025/05/17-13:24:52.138 5d30 Manual compaction at level-0 from 'undefined' @ 72057594037927935 : 1 .. 'undefined' @ 0 : 0; will stop at (end)

@@ -1,0 +1,65 @@
+{
+  "id": "arcana",
+  "title": "Arcana",
+  "description": "As You Wish",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": 12,
+    "verified": 12
+  },
+  "authors": [{
+    "name": "Farael",
+    "url": "YOUR WEBSITE ADDRESS HERE",
+    "email": "YOUR EMAIL ADDRESS HERE",
+    "discord": "YOUR DISCORD USERNAME HERE"
+  }],
+  "esmodules": ["arcana.mjs", "arcana-sheet.js"],
+  "actors": {
+      "types": ["character"],  
+      "sheets": {
+          "character": {  
+              "label": "Arcana Character Sheet",
+              "path": "systems/arcana/templates/actor-sheet.html",
+              "default": true
+          }
+      }
+  },
+  "styles": ["styles/system-styles.css"],
+  "packs": [{
+    "name": "monsters",
+    "label": "My Monsters",
+    "type": "Actor"
+  },
+  {
+    "name": "items",
+    "label": "My Items",
+    "type": "Item"
+  }],
+  "languages": [{
+    "lang": "pt-br",
+    "name": "Português Brasileiro",
+    "path": "lang/pt.json"
+  }],
+  "documentTypes": {
+      "Actor": {
+          "hero": { "htmlFields": ["background.biography"] },
+          "villain": { "htmlFields": ["background.biography"] },
+          "pawn": {}
+      },
+      "Item": {
+          "weapon": {},
+          "spell": {}
+      }
+  },
+  "socket": false,
+  "initiative": "1d20",
+  "grid": {
+    "distance": 10,
+    "units": "m"
+  },
+  "primaryTokenAttribute": "resources.health",
+  "secondaryTokenAttribute": "resources.power",
+  "url": "https://your/hosted/system/repo/",
+  "manifest": "https://your/hosted/system/repo/system.json",
+  "download": "https://your/packaged/download/archive.zip"
+}
