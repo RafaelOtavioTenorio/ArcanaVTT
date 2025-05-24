@@ -90,37 +90,55 @@
               <h1 class="forcaAttr">{{system.attributes.forca}}</h1>
               <input style="text-align: center;" type="number" name="system.attributes.forca"
                 value="{{actor.system.attributes.forca}}" />
+                <button type="button" class="rollBtn" data-roll="1d20 + @attributes.forca" data-label="Teste de Força">
+  Rolar Força
+</button>
             </div>
             <div class="fichaCampoAtributos">
               <label class="fichaAtributos">DES</label>
               <h1 class="destrezaAttr">{{system.attributes.destreza}}</h1>
               <input style="text-align: center;" type="number" name="system.attributes.destreza"
                 value="{{actor.system.attributes.destreza}}" />
+                <button type="button" class="rollBtn" data-roll="1d20 + @attributes.destreza" data-label="Teste de Destreza">
+  Rolar Destreza
+</button>
             </div>
             <div class="fichaCampoAtributos">
               <label class="fichaAtributos">CON</label>
               <h1 class="constituicaoAttr">{{system.attributes.constituicao}}</h1>
               <input style="text-align: center;" type="number" name="system.attributes.constituicao"
                 value="{{actor.system.attributes.constituicao}}" />
+                            <button type="button" class="rollBtn" data-roll="1d20 + @attributes.destreza" data-label="Teste de Constituição">
+  Rolar Constituição
+</button>
             </div>
             <div class="fichaCampoAtributos">
               <label class="fichaAtributos">INT</label>
               <h1 class="inteligenciaAttr">{{system.attributes.inteligencia}}</h1>
               <input style="text-align: center;" type="number" name="system.attributes.inteligencia"
                 value="{{actor.system.attributes.inteligencia}}" />
+                            <button type="button" class="rollBtn" data-roll="1d20 + @attributes.destreza" data-label="Teste de Inteligência">
+  Rolar Inteligência
+</button>
             </div>
             <div class="fichaCampoAtributos">
               <label class="fichaAtributos">SAB</label>
               <h1 class="sabedoriaAttr">{{system.attributes.sabedoria}}</h1>
               <input style="text-align: center;" type="number" name="system.attributes.sabedoria"
                 value="{{actor.system.attributes.sabedoria}}" />
+                            <button type="button" class="rollBtn" data-roll="1d20 + @attributes.destreza" data-label="Teste de Sabedoria">
+  Rolar Sabedoria
+</button>
             </div>
             <div class="fichaCampoAtributos">
               <label class="fichaAtributos">CAR</label>
               <h1 class="carismaAttr">{{actor.system.attributes.carisma}}</h1>
               <input style="text-align: center;" type="number" name="system.attributes.carisma"
                 value="{{actor.system.attributes.carisma}}" />
-            </div>
+                <button type="button" class="rollBtn" data-roll="1d20 + @attributes.destreza" data-label="Teste de Carisma">
+  Rolar Carisma
+</button>
+            </div>        
           </div>
 
           <div class="fichaColumnWrapper"
@@ -168,26 +186,10 @@
               <h1>Equipamentos</h1>
 
               <h2>Armadura e Escudo</h2>
-              <div>
-                <input type="text" name="system.armad1" value="{{actor.system.armad1}}">
-              </div>
-              <div>
-                <input type="text" name="system.armad2" value="{{actor.system.armad2}}">
-              </div>
-              <div>
-                <input type="text" name="system.armad3" value="{{actor.system.armad3}}">
-              </div>
+              <textarea name="system.armad" rows="3" style="width: 100%;">{{actor.system.armad}}</textarea>
 
               <h2>Proficiências</h2>
-              <div>
-                <input type="text" name="system.prof1" value="{{actor.system.prof1}}">
-              </div>
-              <div>
-                <input type="text" name="system.prof2" value="{{actor.system.prof2}}">
-              </div>
-              <div>
-                <input type="text" name="system.prof3" value="{{actor.system.prof3}}">
-              </div>
+              <textarea name="system.prof" rows="3" style="width: 100%;">{{actor.system.prof}}</textarea>
 
               <div class="fichaColumnWrapper">
                 <div style="width: 32%; margin: 0 auto;">
@@ -222,379 +224,423 @@
           </div>
 
           <h1>Ataques Principais</h1>
-          <input type="text" name="system.ataque1" value="{{actor.system.ataque1}}">
-          <input type="text" name="system.ataque2" value="{{actor.system.ataque2}}">
-          <input type="text" name="system.ataque3" value="{{actor.system.ataque3}}">
-          <input type="text" name="system.ataque4" value="{{actor.system.ataque4}}">
-          <input type="text" name="system.ataque5" value="{{actor.system.ataque5}}">
-          <input type="text" name="system.ataque6" value="{{actor.system.ataque6}}">
+          <textarea name="system.ataque" rows="15" style="width: 100%;">{{actor.system.ataque}}</textarea>
+
         </div>
 
         <div class="fichaColumn">
           <h1>Perícias</h1>
-          <div class="fichaColumnWrapper">
-            <h2>Treinamento</h2>
-            <h2>Atributo</h2>
-            <h2>Outros</h2>
-            <h2>Total</h2>
+          <div class="fichaColumnWrapper periciaHeader">
+            <h2 class="pH2Tr">Treino</h2>
+            <h2 class="pH2A">Atributo</h2>
+            <h2 class="pH2O">Outros</h2>
+            <h2 class="pH2Tt">Total</h2>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="acro" data-atributo="destreza">
-            <label>Acrobacia</label>
-            <input type="number" name="system.pericias.treinamento.acro" class="treinamento"
-              value="{{actor.system.pericias.treinamento.acro}}">
+            <div class="periciasAtributoWrapper2"><label>Acrobacia</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.acro" class="treinamento periciaInput"
+                value="{{actor.system.pericias.treinamento.acro}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="destrezaAttr">{{system.attributes.destreza}}</span>
             </div>
 
-            <input type="number" name="system.acroBonus" class="bonus" value="{{actor.system.acroBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.acroBonus" class="bonus" value="{{actor.system.acroBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="ades" data-atributo="sabedoria">
-            <label>Adestramento</label>
-            <input type="number" name="system.pericias.treinamento.ades" class="treinamento"
-              value="{{actor.system.pericias.treinamento.ades}}">
+            <div class="periciasAtributoWrapper2"><label>Adestramento</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.ades" class="treinamento periciaInput"
+                value="{{actor.system.pericias.treinamento.ades}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="sabedoriaAttr">{{system.attributes.sabedoria}}</span>
             </div>
 
-            <input type="number" name="system.adesBonus" class="bonus" value="{{actor.system.adesBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.adesBonus" class="bonus" value="{{actor.system.adesBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="atle" data-atributo="forca">
-            <label>Atletismo</label>
-            <input type="number" name="system.pericias.treinamento.atle" class="treinamento"
-              value="{{actor.system.pericias.treinamento.atle}}">
+            <div class="periciasAtributoWrapper2"><label>Atletismo</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.atle" class="treinamento"
+                value="{{actor.system.pericias.treinamento.atle}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="forcaAttr">{{system.attributes.forca}}</span>
             </div>
 
-            <input type="number" name="system.atleBonus" class="bonus" value="{{actor.system.atleBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.atleBonus" class="bonus" value="{{actor.system.atleBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="atua" data-atributo="carisma">
-            <label>Atuação</label>
-            <input type="number" name="system.pericias.treinamento.atua" class="treinamento"
-              value="{{actor.system.pericias.treinamento.atua}}">
+            <div class="periciasAtributoWrapper2"><label>Atuação</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.atua" class="treinamento"
+                value="{{actor.system.pericias.treinamento.atua}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="carismaAttr">{{system.attributes.carisma}}</span>
             </div>
 
-            <input type="number" name="system.atuaBonus" class="bonus" value="{{actor.system.atuaBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.atuaBonus" class="bonus" value="{{actor.system.atuaBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="conh" data-atributo="inteligencia">
-            <label>Conhecimento</label>
-            <input type="number" name="system.pericias.treinamento.conh" class="treinamento"
-              value="{{actor.system.pericias.treinamento.conh}}">
+            <div class="periciasAtributoWrapper2"><label>Conhecimento</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.conh" class="treinamento"
+                value="{{actor.system.pericias.treinamento.conh}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="inteligenciaAttr">{{system.attributes.inteligencia}}</span>
             </div>
 
-            <input type="number" name="system.conhBonus" class="bonus" value="{{actor.system.conhBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.conhBonus" class="bonus" value="{{actor.system.conhBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="fort" data-atributo="constituicao">
-            <label>Fortitude</label>
-            <input type="number" name="system.pericias.treinamento.fort" class="treinamento"
-              value="{{actor.system.pericias.treinamento.fort}}">
+            <div class="periciasAtributoWrapper2"><label>Fortitude</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.fort" class="treinamento"
+                value="{{actor.system.pericias.treinamento.fort}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="constituicaoAttr">{{system.attributes.constituicao}}</span>
             </div>
 
-            <input type="number" name="system.fortBonus" class="bonus" value="{{actor.system.fortBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.fortBonus" class="bonus" value="{{actor.system.fortBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="furt" data-atributo="destreza">
-            <label>Furtividade</label>
-            <input type="number" name="system.pericias.treinamento.furt" class="treinamento"
-              value="{{actor.system.pericias.treinamento.furt}}">
+            <div class="periciasAtributoWrapper2"><label>Furtividade</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.furt" class="treinamento"
+                value="{{actor.system.pericias.treinamento.furt}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="destrezaAttr">{{system.attributes.destreza}}</span>
             </div>
 
-            <input type="number" name="system.furtBonus" class="bonus" value="{{actor.system.furtBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.furtBonus" class="bonus" value="{{actor.system.furtBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="inic" data-atributo="destreza">
-            <label>Destreza</label>
-            <input type="number" name="system.pericias.treinamento.inic" class="treinamento"
-              value="{{actor.system.pericias.treinamento.inic}}">
+            <div class="periciasAtributoWrapper2"><label>Iniciativa</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.inic" class="treinamento"
+                value="{{actor.system.pericias.treinamento.inic}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="destrezaAttr">{{system.attributes.destreza}}</span>
             </div>
 
-            <input type="number" name="system.inicBonus" class="bonus" value="{{actor.system.inicBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.inicBonus" class="bonus" value="{{actor.system.inicBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="inti" data-atributo="carisma">
-            <label>Intimidação</label>
-            <input type="number" name="system.pericias.treinamento.inti" class="treinamento"
-              value="{{actor.system.pericias.treinamento.inti}}">
+            <div class="periciasAtributoWrapper2"><label>Intimidação</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.inti" class="treinamento"
+                value="{{actor.system.pericias.treinamento.inti}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="carismaAttr">{{system.attributes.carisma}}</span>
             </div>
 
-            <input type="number" name="system.intiBonus" class="bonus" value="{{actor.system.intiBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.intiBonus" class="bonus" value="{{actor.system.intiBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="intu" data-atributo="sabedoria">
-            <label>Intuição</label>
-            <input type="number" name="system.pericias.treinamento.intu" class="treinamento"
-              value="{{actor.system.pericias.treinamento.intu}}">
+            <div class="periciasAtributoWrapper2"><label>Intuição</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.intu" class="treinamento"
+                value="{{actor.system.pericias.treinamento.intu}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="sabedoriaAttr">{{system.attributes.sabedoria}}</span>
             </div>
 
-            <input type="number" name="system.intuBonus" class="bonus" value="{{actor.system.intuBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.intuBonus" class="bonus" value="{{actor.system.intuBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="inve" data-atributo="inteligencia">
-            <label>Investigaçaõ</label>
-            <input type="number" name="system.pericias.treinamento.inve" class="treinamento"
-              value="{{actor.system.pericias.treinamento.inve}}">
+            <div class="periciasAtributoWrapper2"><label>Investigaçaõ</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.inve" class="treinamento"
+                value="{{actor.system.pericias.treinamento.inve}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="inteligenciaAttr">{{system.attributes.inteligencia}}</span>
             </div>
 
-            <input type="number" name="system.inveBonus" class="bonus" value="{{actor.system.inveBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.inveBonus" class="bonus" value="{{actor.system.inveBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="joga" data-atributo="carisma">
-            <label>jogatina</label>
-            <input type="number" name="system.pericias.treinamento.joga" class="treinamento"
-              value="{{actor.system.pericias.treinamento.joga}}">
+            <div class="periciasAtributoWrapper2"><label>jogatina</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.joga" class="treinamento"
+                value="{{actor.system.pericias.treinamento.joga}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="carismaAttr">{{system.attributes.carisma}}</span>
             </div>
 
-            <input type="number" name="system.jogaBonus" class="bonus" value="{{actor.system.jogaBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.jogaBonus" class="bonus" value="{{actor.system.jogaBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="ladi" data-atributo="destreza">
-            <label>Ladinagem</label>
-            <input type="number" name="system.pericias.treinamento.ladi" class="treinamento"
-              value="{{actor.system.pericias.treinamento.ladi}}">
+            <div class="periciasAtributoWrapper2"><label>Ladinagem</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.ladi" class="treinamento"
+                value="{{actor.system.pericias.treinamento.ladi}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="destrezaAttr">{{system.attributes.destreza}}</span>
             </div>
 
-            <input type="number" name="system.ladiBonus" class="bonus" value="{{actor.system.ladiBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.ladiBonus" class="bonus" value="{{actor.system.ladiBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="luta" data-atributo="forca">
-            <label>Luta</label>
-            <input type="number" name="system.pericias.treinamento.luta" class="treinamento"
-              value="{{actor.system.pericias.treinamento.luta}}">
+            <div class="periciasAtributoWrapper2"><label>Luta</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.luta" class="treinamento"
+                value="{{actor.system.pericias.treinamento.luta}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="forcaAttr">{{system.attributes.forca}}</span>
             </div>
 
-            <input type="number" name="system.lutaBonus" class="bonus" value="{{actor.system.lutaBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.lutaBonus" class="bonus" value="{{actor.system.lutaBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="medi" data-atributo="sabedoria">
-            <label>Medicina</label>
-            <input type="number" name="system.pericias.treinamento.medi" class="treinamento"
-              value="{{actor.system.pericias.treinamento.medi}}">
+            <div class="periciasAtributoWrapper2"><label>Medicina</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.medi" class="treinamento"
+                value="{{actor.system.pericias.treinamento.medi}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="sabedoriaAttr">{{system.attributes.sabedoria}}</span>
             </div>
 
-            <input type="number" name="system.mediBonus" class="bonus" value="{{actor.system.mediBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.mediBonus" class="bonus" value="{{actor.system.mediBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="mist" data-atributo="inteligencia">
-            <label>Misticismo</label>
-            <input type="number" name="system.pericias.treinamento.mist" class="treinamento"
-              value="{{actor.system.pericias.treinamento.mist}}">
+            <div class="periciasAtributoWrapper2"><label>Misticismo</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.mist" class="treinamento"
+                value="{{actor.system.pericias.treinamento.mist}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="inteligenciaAttr">{{system.attributes.inteligencia}}</span>
             </div>
 
-            <input type="number" name="system.mistBonus" class="bonus" value="{{actor.system.mistBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.mistBonus" class="bonus" value="{{actor.system.mistBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="nobr" data-atributo="inteligencia">
-            <label>Nobreza</label>
-            <input type="number" name="system.pericias.treinamento.nobr" class="treinamento"
-              value="{{actor.system.pericias.treinamento.nobr}}">
+            <div class="periciasAtributoWrapper2"><label>Nobreza</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.nobr" class="treinamento"
+                value="{{actor.system.pericias.treinamento.nobr}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="inteligenciaAttr">{{system.attributes.inteligencia}}</span>
             </div>
 
-            <input type="number" name="system.nobrBonus" class="bonus" value="{{actor.system.nobrBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.nobrBonus" class="bonus" value="{{actor.system.nobrBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="ofic" data-atributo="inteligencia">
-            <label>Ofício</label>
-            <input type="number" name="system.pericias.treinamento.ofic" class="treinamento"
-              value="{{actor.system.pericias.treinamento.ofic}}">
+            <div class="periciasAtributoWrapper2"><label>Ofício</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.ofic" class="treinamento"
+                value="{{actor.system.pericias.treinamento.ofic}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="inteligenciaAttr">{{system.attributes.inteligencia}}</span>
             </div>
 
-            <input type="number" name="system.oficBonus" class="bonus" value="{{actor.system.oficBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.oficBonus" class="bonus" value="{{actor.system.oficBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="perc" data-atributo="sabedoria">
-            <label>Percepção</label>
-            <input type="number" name="system.pericias.treinamento.perc" class="treinamento"
-              value="{{actor.system.pericias.treinamento.perc}}">
+            <div class="periciasAtributoWrapper2"><label>Percepção</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.perc" class="treinamento"
+                value="{{actor.system.pericias.treinamento.perc}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="sabedoriaAttr">{{system.attributes.sabe}}</span>
             </div>
 
-            <input type="number" name="system.percBonus" class="bonus" value="{{actor.system.percBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.percBonus" class="bonus" value="{{actor.system.percBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="pers" data-atributo="carisma">
-            <label>Persuasão</label>
-            <input type="number" name="system.pericias.treinamento.pers" class="treinamento"
-              value="{{actor.system.pericias.treinamento.pers}}">
+            <div class="periciasAtributoWrapper2"><label>Persuasão</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.pers" class="treinamento"
+                value="{{actor.system.pericias.treinamento.pers}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="carismaAttr">{{system.attributes.carisma}}</span>
             </div>
 
-            <input type="number" name="system.persBonus" class="bonus" value="{{actor.system.persBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.persBonus" class="bonus" value="{{actor.system.persBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="pilo" data-atributo="destreza">
-            <label>Pilotagem</label>
-            <input type="number" name="system.pericias.treinamento.pilo" class="treinamento"
-              value="{{actor.system.pericias.treinamento.pilo}}">
+            <div class="periciasAtributoWrapper2"><label>Pilotagem</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.pilo" class="treinamento"
+                value="{{actor.system.pericias.treinamento.pilo}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="destrezaAttr">{{system.attributes.destreza}}</span>
             </div>
 
-            <input type="number" name="system.piloBonus" class="bonus" value="{{actor.system.piloBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.piloBonus" class="bonus" value="{{actor.system.piloBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="reli" data-atributo="sabedoria">
-            <label>Religião</label>
-            <input type="number" name="system.pericias.treinamento.reli" class="treinamento"
-              value="{{actor.system.pericias.treinamento.reli}}">
+            <div class="periciasAtributoWrapper2"><label>Religião</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.reli" class="treinamento"
+                value="{{actor.system.pericias.treinamento.reli}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="sabedoriaAttr">{{system.attributes.sabedoria}}</span>
             </div>
 
-            <input type="number" name="system.reliBonus" class="bonus" value="{{actor.system.reliBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.reliBonus" class="bonus" value="{{actor.system.reliBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="sobr" data-atributo="sabedoria">
-            <label>Sobrevivência</label>
-            <input type="number" name="system.pericias.treinamento.sobr" class="treinamento"
-              value="{{actor.system.pericias.treinamento.sobr}}">
+            <div class="periciasAtributoWrapper2"><label>Sobrevivência</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.sobr" class="treinamento"
+                value="{{actor.system.pericias.treinamento.sobr}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="sabedoriaAttr">{{system.attributes.sabedoria}}</span>
             </div>
 
-            <input type="number" name="system.sobrBonus" class="bonus" value="{{actor.system.sobrBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.sobrBonus" class="bonus" value="{{actor.system.sobrBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
           <div class="fichaColumnWrapper periciaRow" data-pericia="vont" data-atributo="sabedoria">
-            <label>Vontade</label>
-            <input type="number" name="system.pericias.treinamento.vont" class="treinamento"
-              value="{{actor.system.pericias.treinamento.vont}}">
+            <div class="periciasAtributoWrapper2"><label>Vontade</label></div>
+            <div class="periciasAtributoWrapper">
+              <input type="number" name="system.pericias.treinamento.vont" class="treinamento"
+                value="{{actor.system.pericias.treinamento.vont}}">
+            </div>
 
             <div class="periciasAtributoWrapper">
               <span class="sabedoriaAttr">{{system.attributes.sabedoria}}</span>
             </div>
 
-            <input type="number" name="system.vontBonus" class="bonus" value="{{actor.system.vontBonus}}">
+            <div class="periciasAtributoWrapper"><input type="number" name="system.vontBonus" class="bonus" value="{{actor.system.vontBonus}}"></div>
 
-            <div class="periciasAtributoWrapper">
+            <div class="periciasAtributoWrapperTotal">
               <span class="total"></span>
             </div>
           </div>
@@ -602,45 +648,41 @@
       </div>
 
       <h1>Inventário</h1>
-      <h2>Itens</h2>
-      <input type="text" name="system.item1" value="{{actor.system.item1}}">
-      <input type="text" name="system.item2" value="{{actor.system.item2}}">
-      <input type="text" name="system.item3" value="{{actor.system.item3}}">
-      <input type="text" name="system.item4" value="{{actor.system.item4}}">
-      <input type="text" name="system.item5" value="{{actor.system.item5}}">
 
-      <h2>Dinheiro</h2>
-      <label>Moedas de Ouro</label>
-      <input type="number" name="system.MOuro" value="{{actor.system.MOuro}}">
-      <label>Moedas de Prata</label>
-      <input type="number" name="system.MPrata" value="{{actor.system.MPrata}}">
-
-      <h2>Carga</h2>
-      <label>Atual</label>
-      <input type="number" name="system.CargaAtual" value="{{actor.system.CargaAtual}}">
-      <label>Máxima (10x força)</label>
-      <input type="number" name="system.CargaMax" value="{{actor.system.CargaMax}}">
+      <div class="inventarioWrapper">
+        <div class="inventarioColumn">
+          <h2>Itens</h2>
+          <textarea name="system.itens" rows="15" style="width: 100%;">{{actor.system.itens}}</textarea>
+        </div>
+        <div class="cargaSoisColumn">
+          <div class="soisRow" style="margin-right: 2%;">
+            <h2>$ói$</h2>
+            <input type="number" name="system.MOuro" value="{{actor.system.MOuro}}" style="margin-top: 16px;" />
+          </div>
+          <div>
+            <h2>Carga</h2>
+            <div class="cargaRow">
+              <div style="margin-right: 3%;">
+                <label>Atual</label>
+                <input type="number" name="system.CargaAtual" value="{{actor.system.CargaAtual}}">
+              </div>
+              <div>
+                <label>Máxima (10x força)</label>
+                <input type="number" name="system.CargaMax" value="{{actor.system.CargaMax}}">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
 
       <h1>Habilidades de Classe, Raça e Passiva</h1>
-      <input type="text" name="system.skill1" value="{{actor.system.skill1}}">
-      <input type="text" name="system.skill2" value="{{actor.system.skill2}}">
-      <input type="text" name="system.skill3" value="{{actor.system.skill3}}">
-      <input type="text" name="system.skill4" value="{{actor.system.skill4}}">
-      <input type="text" name="system.skill5" value="{{actor.system.skill5}}">
+      <textarea name="system.skills" rows="15" style="width: 100%;">{{actor.system.skills}}</textarea>
 
       <h1>Poderes</h1>
-      <input type="text" name="system.poder1" value="{{actor.system.poder1}}">
-      <input type="text" name="system.poder2" value="{{actor.system.poder2}}">
-      <input type="text" name="system.poder3" value="{{actor.system.poder3}}">
-      <input type="text" name="system.poder4" value="{{actor.system.poder4}}">
-      <input type="text" name="system.poder5" value="{{actor.system.poder5}}">
+      <textarea name="system.poderes" rows="15" style="width: 100%;">{{actor.system.poderes}}</textarea>
 
       <h1>Magias</h1>
-      <input type="text" name="system.magia1" value="{{actor.system.magia1}}">
-      <input type="text" name="system.magia2" value="{{actor.system.magia2}}">
-      <input type="text" name="system.magia3" value="{{actor.system.magia3}}">
-      <input type="text" name="system.magia4" value="{{actor.system.magia4}}">
-      <input type="text" name="system.magia5" value="{{actor.system.magia5}}">
+      <textarea name="system.magias" rows="15" style="width: 100%;">{{actor.system.magias}}</textarea>
 
 
     </div>

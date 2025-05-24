@@ -33,7 +33,21 @@ class ArcanaCharacterSheet extends ActorSheet {
 
       this.updateAttributeDisplays(html);
     });
+
+    html.find(".rollBtn").click(ev => {
+    const rollFormula = ev.currentTarget.dataset.roll;
+    const label = ev.currentTarget.dataset.label;
+    const roll = new Roll(rollFormula, this.actor.getRollData());
+    roll.roll({async: true}).then(r => {
+      r.toMessage({
+        speaker: ChatMessage.getSpeaker({ actor: this.actor }),
+        flavor: label
+      });
+    });
+  });
   }
+  
+  
 
   calcularModificador(valor) {
     if (valor >= 0) {
@@ -75,6 +89,8 @@ class ArcanaCharacterSheet extends ActorSheet {
       wrapper.find(".total").text(isNaN(total) ? "--" : total);
     });
   }
+
+  
 }
 
 Actors.registerSheet("arcana", ArcanaCharacterSheet, { makeDefault: true });
